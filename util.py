@@ -31,5 +31,30 @@ def load_data_n_model(dataset_name, model_name, root):
             train_epoch = 50 #20    
         return train_loader, test_loader, model, train_epoch
     
+
+    elif dataset_name == 'Widar':
+        print('using dataset: Widar')
+        num_classes = classes['Widar']
+        train_loader = torch.utils.data.DataLoader(dataset=Widar_Dataset(root + 'Widardata/train/'), batch_size=64, shuffle=True)
+        test_loader = torch.utils.data.DataLoader(dataset=Widar_Dataset(root + 'Widardata/test/'), batch_size=128, shuffle=False)
+        if model_name == 'VGG16':
+            print("using model: VGG16")
+            model = Widar_VGG16(num_classes)
+            train_epoch = 30 #20
+        elif model_name == 'VGG64':
+            print("using model: VGG64")
+            model = Widar_VGG64(num_classes)
+            train_epoch = 30 #40
+        elif model_name == 'GoogLeNet':
+            print("using model: GoogLeNet")
+            model = Widar_GoogLeNet(num_classes)
+            train_epoch = 30
+        elif model_name == 'DenseNet':
+            print("using model: DenseNet")
+            model = Widar_DenseNet(num_classes)
+            train_epoch = 30 #40
+        
+        return train_loader, test_loader, model, train_epoch   
+    
     
     

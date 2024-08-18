@@ -62,7 +62,7 @@ def test(model, tensor_loader, criterion, device):
 def main():
     root = '/content/Wifi_Sensing/' 
     parser = argparse.ArgumentParser('WiFi Imaging Benchmark')
-    parser.add_argument('--dataset', choices = ['UT_HAR_data'])
+    parser.add_argument('--dataset', choices = ['UT_HAR_data', 'Widar'])
     parser.add_argument('--model', choices = ['VGG16','VGG64','GoogLeNet','DenseNet'])
     args = parser.parse_args()
 
